@@ -7,27 +7,54 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5D09D1C4252AA7F7007BEDD0 /* CameraOverlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D09D1C2252AA7F7007BEDD0 /* CameraOverlayViewController.m */; };
+		5D01C75A2564140400B3C4BF /* UserDefaultConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D01C7592564140400B3C4BF /* UserDefaultConstants.m */; };
+		5D09D1C4252AA7F7007BEDD0 /* CameraOverlayViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5D09D1C2252AA7F7007BEDD0 /* CameraOverlayViewController.mm */; };
 		5D09D1C5252AA7F7007BEDD0 /* CameraOverlayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D09D1C3252AA7F7007BEDD0 /* CameraOverlayViewController.xib */; };
+		5D0C21BF256CBE94005284B1 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D0C21BD256CBE94005284B1 /* SceneDelegate.m */; };
+		5DAEB86E254F725900C9A315 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DAEB86D254F725900C9A315 /* opencv2.framework */; };
+		5DAEB871254F730000C9A315 /* ImageProcessor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5DAEB86F254F730000C9A315 /* ImageProcessor.cpp */; };
+		5DAEB8732551A89900C9A315 /* ImageProcessingBridge.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5DAEB8722551A89900C9A315 /* ImageProcessingBridge.mm */; };
 		5DC9FD582522DAA600CC8A63 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DC9FD572522DAA600CC8A63 /* AppDelegate.m */; };
-		5DC9FD5B2522DAA600CC8A63 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DC9FD5A2522DAA600CC8A63 /* SceneDelegate.m */; };
 		5DC9FD5E2522DAA600CC8A63 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DC9FD5D2522DAA600CC8A63 /* ViewController.m */; };
 		5DC9FD612522DAA600CC8A63 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DC9FD5F2522DAA600CC8A63 /* Main.storyboard */; };
 		5DC9FD632522DAA700CC8A63 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5DC9FD622522DAA700CC8A63 /* Assets.xcassets */; };
 		5DC9FD662522DAA700CC8A63 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DC9FD642522DAA700CC8A63 /* LaunchScreen.storyboard */; };
 		5DC9FD692522DAA700CC8A63 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DC9FD682522DAA700CC8A63 /* main.m */; };
-		5DC9FD722522E64700CC8A63 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DC9FD712522E64700CC8A63 /* AVFoundation.framework */; };
+		5DF90CB42563784E00ED64E0 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DF90CB32563784E00ED64E0 /* SettingsViewController.m */; };
+		5DF90CB62563790600ED64E0 /* SettingsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5DF90CB52563790600ED64E0 /* SettingsView.xib */; };
+		5DF90CBD2563809500ED64E0 /* FilterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DF90CBB2563809500ED64E0 /* FilterTableViewCell.m */; };
+		5DF90CC02563856C00ED64E0 /* FilterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5DF90CBF2563856C00ED64E0 /* FilterTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		5D3E825625488DA90068123F /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		5D01C7582564140400B3C4BF /* UserDefaultConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserDefaultConstants.h; sourceTree = "<group>"; };
+		5D01C7592564140400B3C4BF /* UserDefaultConstants.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserDefaultConstants.m; sourceTree = "<group>"; };
 		5D09D1C1252AA7F7007BEDD0 /* CameraOverlayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CameraOverlayViewController.h; sourceTree = "<group>"; };
-		5D09D1C2252AA7F7007BEDD0 /* CameraOverlayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CameraOverlayViewController.m; sourceTree = "<group>"; };
+		5D09D1C2252AA7F7007BEDD0 /* CameraOverlayViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = CameraOverlayViewController.mm; sourceTree = "<group>"; };
 		5D09D1C3252AA7F7007BEDD0 /* CameraOverlayViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CameraOverlayViewController.xib; sourceTree = "<group>"; };
+		5D0C21BD256CBE94005284B1 /* SceneDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
+		5D0C21BE256CBE94005284B1 /* SceneDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
+		5DAEB86D254F725900C9A315 /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = opencv2.framework; sourceTree = "<group>"; };
+		5DAEB86F254F730000C9A315 /* ImageProcessor.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ImageProcessor.cpp; sourceTree = "<group>"; };
+		5DAEB870254F730000C9A315 /* ImageProcessor.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ImageProcessor.hpp; sourceTree = "<group>"; };
+		5DAEB8722551A89900C9A315 /* ImageProcessingBridge.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ImageProcessingBridge.mm; sourceTree = "<group>"; };
+		5DAEB8742551A8B000C9A315 /* ImageProcessingBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageProcessingBridge.h; sourceTree = "<group>"; };
 		5DC9FD532522DAA600CC8A63 /* Classroom Visual Assistant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Classroom Visual Assistant.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DC9FD562522DAA600CC8A63 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		5DC9FD572522DAA600CC8A63 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		5DC9FD592522DAA600CC8A63 /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
-		5DC9FD5A2522DAA600CC8A63 /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
 		5DC9FD5C2522DAA600CC8A63 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		5DC9FD5D2522DAA600CC8A63 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		5DC9FD602522DAA600CC8A63 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -35,7 +62,12 @@
 		5DC9FD652522DAA700CC8A63 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5DC9FD672522DAA700CC8A63 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5DC9FD682522DAA700CC8A63 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		5DC9FD712522E64700CC8A63 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		5DF90CB22563784E00ED64E0 /* SettingsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		5DF90CB32563784E00ED64E0 /* SettingsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		5DF90CB52563790600ED64E0 /* SettingsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsView.xib; sourceTree = "<group>"; };
+		5DF90CBA2563809500ED64E0 /* FilterTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FilterTableViewCell.h; sourceTree = "<group>"; };
+		5DF90CBB2563809500ED64E0 /* FilterTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FilterTableViewCell.m; sourceTree = "<group>"; };
+		5DF90CBF2563856C00ED64E0 /* FilterTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FilterTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,19 +75,31 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5DC9FD722522E64700CC8A63 /* AVFoundation.framework in Frameworks */,
+				5DAEB86E254F725900C9A315 /* opencv2.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5D0C21BC256CBE0C005284B1 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				5DC9FD5F2522DAA600CC8A63 /* Main.storyboard */,
+				5DC9FD642522DAA700CC8A63 /* LaunchScreen.storyboard */,
+				5D09D1C3252AA7F7007BEDD0 /* CameraOverlayViewController.xib */,
+				5DF90CB52563790600ED64E0 /* SettingsView.xib */,
+				5DF90CBF2563856C00ED64E0 /* FilterTableViewCell.xib */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
 		5DC9FD4A2522DAA600CC8A63 = {
 			isa = PBXGroup;
 			children = (
+				5DAEB86D254F725900C9A315 /* opencv2.framework */,
 				5DC9FD552522DAA600CC8A63 /* Classroom Visual Assistant */,
 				5DC9FD542522DAA600CC8A63 /* Products */,
-				5DC9FD702522E64700CC8A63 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -70,30 +114,30 @@
 		5DC9FD552522DAA600CC8A63 /* Classroom Visual Assistant */ = {
 			isa = PBXGroup;
 			children = (
-				5DC9FD562522DAA600CC8A63 /* AppDelegate.h */,
-				5DC9FD572522DAA600CC8A63 /* AppDelegate.m */,
-				5DC9FD592522DAA600CC8A63 /* SceneDelegate.h */,
-				5DC9FD5A2522DAA600CC8A63 /* SceneDelegate.m */,
-				5DC9FD5C2522DAA600CC8A63 /* ViewController.h */,
-				5DC9FD5D2522DAA600CC8A63 /* ViewController.m */,
-				5DC9FD5F2522DAA600CC8A63 /* Main.storyboard */,
+				5D0C21BC256CBE0C005284B1 /* Storyboards */,
 				5DC9FD622522DAA700CC8A63 /* Assets.xcassets */,
-				5DC9FD642522DAA700CC8A63 /* LaunchScreen.storyboard */,
+				5D0C21BE256CBE94005284B1 /* SceneDelegate.h */,
+				5D0C21BD256CBE94005284B1 /* SceneDelegate.m */,
 				5DC9FD672522DAA700CC8A63 /* Info.plist */,
 				5DC9FD682522DAA700CC8A63 /* main.m */,
+				5DC9FD562522DAA600CC8A63 /* AppDelegate.h */,
+				5DC9FD572522DAA600CC8A63 /* AppDelegate.m */,
+				5DC9FD5C2522DAA600CC8A63 /* ViewController.h */,
+				5DC9FD5D2522DAA600CC8A63 /* ViewController.m */,
 				5D09D1C1252AA7F7007BEDD0 /* CameraOverlayViewController.h */,
-				5D09D1C2252AA7F7007BEDD0 /* CameraOverlayViewController.m */,
-				5D09D1C3252AA7F7007BEDD0 /* CameraOverlayViewController.xib */,
+				5D09D1C2252AA7F7007BEDD0 /* CameraOverlayViewController.mm */,
+				5DAEB8742551A8B000C9A315 /* ImageProcessingBridge.h */,
+				5DAEB8722551A89900C9A315 /* ImageProcessingBridge.mm */,
+				5DF90CB22563784E00ED64E0 /* SettingsViewController.h */,
+				5DF90CB32563784E00ED64E0 /* SettingsViewController.m */,
+				5DF90CBA2563809500ED64E0 /* FilterTableViewCell.h */,
+				5DF90CBB2563809500ED64E0 /* FilterTableViewCell.m */,
+				5D01C7582564140400B3C4BF /* UserDefaultConstants.h */,
+				5D01C7592564140400B3C4BF /* UserDefaultConstants.m */,
+				5DAEB870254F730000C9A315 /* ImageProcessor.hpp */,
+				5DAEB86F254F730000C9A315 /* ImageProcessor.cpp */,
 			);
 			path = "Classroom Visual Assistant";
-			sourceTree = "<group>";
-		};
-		5DC9FD702522E64700CC8A63 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				5DC9FD712522E64700CC8A63 /* AVFoundation.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -106,6 +150,7 @@
 				5DC9FD4F2522DAA600CC8A63 /* Sources */,
 				5DC9FD502522DAA600CC8A63 /* Frameworks */,
 				5DC9FD512522DAA600CC8A63 /* Resources */,
+				5D3E825625488DA90068123F /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -153,9 +198,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				5DC9FD662522DAA700CC8A63 /* LaunchScreen.storyboard in Resources */,
+				5DF90CC02563856C00ED64E0 /* FilterTableViewCell.xib in Resources */,
 				5DC9FD632522DAA700CC8A63 /* Assets.xcassets in Resources */,
 				5D09D1C5252AA7F7007BEDD0 /* CameraOverlayViewController.xib in Resources */,
 				5DC9FD612522DAA600CC8A63 /* Main.storyboard in Resources */,
+				5DF90CB62563790600ED64E0 /* SettingsView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -166,11 +213,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D01C75A2564140400B3C4BF /* UserDefaultConstants.m in Sources */,
+				5DF90CBD2563809500ED64E0 /* FilterTableViewCell.m in Sources */,
 				5DC9FD5E2522DAA600CC8A63 /* ViewController.m in Sources */,
 				5DC9FD582522DAA600CC8A63 /* AppDelegate.m in Sources */,
+				5DAEB871254F730000C9A315 /* ImageProcessor.cpp in Sources */,
+				5DF90CB42563784E00ED64E0 /* SettingsViewController.m in Sources */,
+				5DAEB8732551A89900C9A315 /* ImageProcessingBridge.mm in Sources */,
+				5D0C21BF256CBE94005284B1 /* SceneDelegate.m in Sources */,
 				5DC9FD692522DAA700CC8A63 /* main.m in Sources */,
-				5DC9FD5B2522DAA600CC8A63 /* SceneDelegate.m in Sources */,
-				5D09D1C4252AA7F7007BEDD0 /* CameraOverlayViewController.m in Sources */,
+				5D09D1C4252AA7F7007BEDD0 /* CameraOverlayViewController.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -315,6 +367,9 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QG5695H4LD;
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = "Classroom Visual Assistant/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -322,7 +377,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "hhzeng.Classroom-Visual-Assistant";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -333,6 +388,9 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QG5695H4LD;
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = "Classroom Visual Assistant/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -340,7 +398,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "hhzeng.Classroom-Visual-Assistant";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};

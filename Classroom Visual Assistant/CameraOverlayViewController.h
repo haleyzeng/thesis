@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void) didTapStop;
 
-- (void) didTapPause:(BOOL)shouldPause;
+- (void) setPause:(BOOL)shouldPause;
 
 @end
 

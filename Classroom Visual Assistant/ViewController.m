@@ -28,7 +28,7 @@
 - (void)startSession:(id)sender {
     self.imagePicker = [UIImagePickerController new];
     
-    // if camera is not an option, show photo library
+    // if camera is not an option, show error
     if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
         self.imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
         UIAlertController *errorAlert = [UIAlertController
@@ -76,7 +76,7 @@
     [self endTimer];
 }
 
-- (void)didTapPause:(BOOL)shouldPause {
+- (void)setPause:(BOOL)shouldPause {
     if (shouldPause) {
         [self endTimer];
     } else {
