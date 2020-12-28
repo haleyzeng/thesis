@@ -11,6 +11,7 @@
 		5D09D1C4252AA7F7007BEDD0 /* CameraOverlayViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5D09D1C2252AA7F7007BEDD0 /* CameraOverlayViewController.mm */; };
 		5D09D1C5252AA7F7007BEDD0 /* CameraOverlayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D09D1C3252AA7F7007BEDD0 /* CameraOverlayViewController.xib */; };
 		5D0C21BF256CBE94005284B1 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D0C21BD256CBE94005284B1 /* SceneDelegate.m */; };
+		5DA4EFB42588F816009E4938 /* ImageProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DA4EFB32588F816009E4938 /* ImageProcessor.m */; };
 		5DAEB86E254F725900C9A315 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DAEB86D254F725900C9A315 /* opencv2.framework */; };
 		5DAEB871254F730000C9A315 /* ImageProcessor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5DAEB86F254F730000C9A315 /* ImageProcessor.cpp */; };
 		5DAEB8732551A89900C9A315 /* ImageProcessingBridge.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5DAEB8722551A89900C9A315 /* ImageProcessingBridge.mm */; };
@@ -47,6 +48,8 @@
 		5D09D1C3252AA7F7007BEDD0 /* CameraOverlayViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CameraOverlayViewController.xib; sourceTree = "<group>"; };
 		5D0C21BD256CBE94005284B1 /* SceneDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
 		5D0C21BE256CBE94005284B1 /* SceneDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
+		5DA4EFB22588F816009E4938 /* ImageProcessor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageProcessor.h; sourceTree = "<group>"; };
+		5DA4EFB32588F816009E4938 /* ImageProcessor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageProcessor.m; sourceTree = "<group>"; };
 		5DAEB86D254F725900C9A315 /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = opencv2.framework; sourceTree = "<group>"; };
 		5DAEB86F254F730000C9A315 /* ImageProcessor.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ImageProcessor.cpp; sourceTree = "<group>"; };
 		5DAEB870254F730000C9A315 /* ImageProcessor.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ImageProcessor.hpp; sourceTree = "<group>"; };
@@ -126,6 +129,8 @@
 				5DC9FD5D2522DAA600CC8A63 /* ViewController.m */,
 				5D09D1C1252AA7F7007BEDD0 /* CameraOverlayViewController.h */,
 				5D09D1C2252AA7F7007BEDD0 /* CameraOverlayViewController.mm */,
+				5DA4EFB22588F816009E4938 /* ImageProcessor.h */,
+				5DA4EFB32588F816009E4938 /* ImageProcessor.m */,
 				5DAEB8742551A8B000C9A315 /* ImageProcessingBridge.h */,
 				5DAEB8722551A89900C9A315 /* ImageProcessingBridge.mm */,
 				5DF90CB22563784E00ED64E0 /* SettingsViewController.h */,
@@ -214,6 +219,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5D01C75A2564140400B3C4BF /* UserDefaultConstants.m in Sources */,
+				5DA4EFB42588F816009E4938 /* ImageProcessor.m in Sources */,
 				5DF90CBD2563809500ED64E0 /* FilterTableViewCell.m in Sources */,
 				5DC9FD5E2522DAA600CC8A63 /* ViewController.m in Sources */,
 				5DC9FD582522DAA600CC8A63 /* AppDelegate.m in Sources */,

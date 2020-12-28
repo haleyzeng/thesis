@@ -11,7 +11,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CameraOverlayViewController">
             <connections>
                 <outlet property="imageView" destination="naQ-ay-KFa" id="JRw-7Y-m3g"/>
+                <outlet property="nextImageButton" destination="YxX-AN-s5Q" id="8qF-I9-0X3"/>
                 <outlet property="pauseButton" destination="BnB-fd-RUP" id="y77-M6-xFO"/>
+                <outlet property="prevImageButton" destination="HxA-dB-eW9" id="q6z-Al-Bdx"/>
                 <outlet property="scrollView" destination="w7s-h1-C1a" id="tqY-h1-DzP"/>
                 <outlet property="settingsButton" destination="aHI-ZE-l5b" id="vVm-p4-hiJ"/>
                 <outlet property="stopButton" destination="lNQ-N4-JAE" id="NDT-eo-Iqt"/>
@@ -36,76 +38,101 @@
                     <viewLayoutGuide key="contentLayoutGuide" id="8zj-Qo-Zab"/>
                     <viewLayoutGuide key="frameLayoutGuide" id="HqD-gG-kfY"/>
                 </scrollView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lNQ-N4-JAE">
-                    <rect key="frame" x="10" y="990" width="80" height="80"/>
-                    <color key="backgroundColor" systemColor="systemRedColor"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="80" id="BwE-cz-pXX"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                    <state key="normal" title="Stop">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </state>
-                    <connections>
-                        <action selector="didTapStop:" destination="-1" eventType="touchUpInside" id="EPH-xX-44B"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BnB-fd-RUP">
-                    <rect key="frame" x="100" y="990" width="104" height="80"/>
-                    <color key="backgroundColor" systemColor="systemRedColor"/>
-                    <constraints>
-                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="80" id="646-KH-rKL"/>
-                        <constraint firstAttribute="height" constant="80" id="rBo-Uq-XZu"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <state key="normal" title="Pause">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </state>
-                    <state key="selected" title="Resume">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </state>
-                    <connections>
-                        <action selector="didTapPause:" destination="-1" eventType="touchUpInside" id="zvS-t5-RxA"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aHI-ZE-l5b">
-                    <rect key="frame" x="212" y="990" width="142" height="80"/>
-                    <color key="backgroundColor" systemColor="systemRedColor"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="80" id="bfY-bQ-eoY"/>
-                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="80" id="fu6-e9-Uo4"/>
-                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="80" id="hLY-01-Mwl"/>
-                        <constraint firstAttribute="width" constant="142" id="zEa-jP-6ZL"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <state key="normal" title="Settings">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </state>
-                    <state key="selected">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </state>
-                    <connections>
-                        <action selector="didTapSettings:" destination="-1" eventType="touchUpInside" id="HpP-JP-fSX"/>
-                    </connections>
-                </button>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="RCS-fA-tdP">
+                    <rect key="frame" x="20" y="1000" width="522" height="60"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lNQ-N4-JAE">
+                            <rect key="frame" x="0.0" y="0.0" width="80" height="60"/>
+                            <color key="backgroundColor" systemColor="systemRedColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                            <state key="normal" title="Stop">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="didTapStop:" destination="-1" eventType="touchUpInside" id="EPH-xX-44B"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BnB-fd-RUP">
+                            <rect key="frame" x="90" y="0.0" width="104" height="60"/>
+                            <color key="backgroundColor" systemColor="systemRedColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <state key="normal" title="Pause">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <state key="selected" title="Resume">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="didTapPause:" destination="-1" eventType="touchUpInside" id="zvS-t5-RxA"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HxA-dB-eW9">
+                            <rect key="frame" x="204" y="0.0" width="75" height="60"/>
+                            <color key="backgroundColor" systemColor="systemBlueColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <state key="normal" title="Prev">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <state key="disabled" title="Prev">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="didTapPrev:" destination="-1" eventType="touchUpInside" id="omZ-n6-GUz"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YxX-AN-s5Q">
+                            <rect key="frame" x="289" y="0.0" width="81" height="60"/>
+                            <color key="backgroundColor" systemColor="systemBlueColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <state key="normal" title="Next">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <state key="disabled" title="Next"/>
+                            <state key="selected">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="didTapNext:" destination="-1" eventType="touchUpInside" id="Dhz-Rb-mUq"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aHI-ZE-l5b">
+                            <rect key="frame" x="380" y="0.0" width="142" height="60"/>
+                            <color key="backgroundColor" systemColor="systemYellowColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <state key="normal" title="Settings">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <state key="selected">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="didTapSettings:" destination="-1" eventType="touchUpInside" id="HpP-JP-fSX"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                </stackView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
             <constraints>
-                <constraint firstItem="BnB-fd-RUP" firstAttribute="leading" secondItem="lNQ-N4-JAE" secondAttribute="trailing" constant="10" id="AYp-UT-KXS"/>
-                <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="BnB-fd-RUP" secondAttribute="bottom" constant="10" id="deU-5P-8JO"/>
-                <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="aHI-ZE-l5b" secondAttribute="bottom" constant="10" id="jCg-om-5vR"/>
-                <constraint firstItem="aHI-ZE-l5b" firstAttribute="leading" secondItem="BnB-fd-RUP" secondAttribute="trailing" constant="8" symbolic="YES" id="jG1-Y7-sMd"/>
-                <constraint firstItem="lNQ-N4-JAE" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="10" id="u3h-Kw-39s"/>
-                <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="lNQ-N4-JAE" secondAttribute="bottom" constant="10" id="w2l-wG-P41"/>
+                <constraint firstItem="RCS-fA-tdP" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="20" id="oio-Gj-HHb"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="RCS-fA-tdP" secondAttribute="bottom" constant="20" id="tOG-jR-vBA"/>
             </constraints>
             <point key="canvasLocation" x="138.5185185185185" y="41.666666666666664"/>
         </view>
     </objects>
     <resources>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

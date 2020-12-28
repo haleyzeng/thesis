@@ -10,44 +10,14 @@
 #import "ImageProcessingBridge.h"
 #import "ImageProcessor.hpp"
 
-@interface ImageProcessingBridge ()
-@property (strong, nonatomic) NSArray *filters;
-@end
-
 @implementation ImageProcessingBridge
 
-- (instancetype)init
-{
-    self = [super init];
-    if (self) {
-        self.filters = [NSArray new];
-    }
-    return self;
-}
-
-- (void)setFiltersList:(NSArray *)filters {
-    self.filters = filters;
-}
-
-- (UIImage *)normalizeImage:(UIImage *)image {
-    if (image.imageOrientation == UIImageOrientationUp) return image;
-
-    UIGraphicsBeginImageContextWithOptions(image.size, NO, image.scale);
-    [image drawInRect:(CGRect){0, 0, image.size}];
-    UIImage *normalizedImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    return normalizedImage;
-}
-
-- (UIImage *)processImage:(UIImage *)image {
-    // normalize image to account for portrait/landscape
-    UIImage *normalizedImage = [self normalizeImage:image];
-    
+- (UIImage *)processImage:(UIImage *)image withFilters:(NSArray *)filters{
     cv::Mat mat;
-    UIImageToMat(normalizedImage, mat, true);
+    UIImageToMat(image, mat, true);
    
     std::vector<std::string> filtersVector(0);
-    for (NSString *filterName in self.filters) {
+    for (NSString *filterName in filters) {
         filtersVector.push_back([self convertNSStringToCppString:filterName]);
     }
     

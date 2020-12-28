@@ -16,6 +16,8 @@
 
 @implementation ViewController
 
+const float kTIMER_LENGTH = 3.0;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -86,7 +88,7 @@
 
 - (void)startTimer {
     [self endTimer];
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:3.0 target:self selector:@selector(timerFired:) userInfo:nil repeats:YES];
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:kTIMER_LENGTH target:self selector:@selector(timerFired:) userInfo:nil repeats:YES];
 }
 
 - (void)endTimer {
