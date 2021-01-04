@@ -2,19 +2,18 @@
 //  CameraOverlayViewController.h
 //  Classroom Visual Assistant
 //
-//  Created by Haley Zeng on 10/4/20.
-//
 
 #import <UIKit/UIKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class CameraOverlayViewController;
 
 @protocol CameraOverlayViewControllerDelegate <NSObject>
 
-- (void) didTapStop;
+- (void)cameraOverlayViewControllerDidTapStop:(CameraOverlayViewController *)viewController;
 
-- (void) setPause:(BOOL)shouldPause;
+- (void)cameraOverlayViewController:(CameraOverlayViewController *)viewController setPause:(BOOL)shouldPause;
 
 @end
 
@@ -22,7 +21,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (weak, nonatomic) id<CameraOverlayViewControllerDelegate> delegate;
 
-- (void) setImage:(UIImage *)image;
+- (void)setImage:(UIImage *)image;
+- (void)setPause:(BOOL)pause;
 
 @end
 

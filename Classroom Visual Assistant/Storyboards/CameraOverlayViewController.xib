@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="ipad10_2" orientation="portrait" layout="fullscreen" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -39,13 +39,13 @@
                     <viewLayoutGuide key="frameLayoutGuide" id="HqD-gG-kfY"/>
                 </scrollView>
                 <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="RCS-fA-tdP">
-                    <rect key="frame" x="20" y="1000" width="522" height="60"/>
+                    <rect key="frame" x="10" y="1010" width="652" height="60"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lNQ-N4-JAE">
-                            <rect key="frame" x="0.0" y="0.0" width="80" height="60"/>
+                            <rect key="frame" x="0.0" y="0.0" width="210" height="60"/>
                             <color key="backgroundColor" systemColor="systemRedColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                            <state key="normal" title="Stop">
+                            <state key="normal" title="End Session">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
                             <connections>
@@ -53,7 +53,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BnB-fd-RUP">
-                            <rect key="frame" x="90" y="0.0" width="104" height="60"/>
+                            <rect key="frame" x="220" y="0.0" width="104" height="60"/>
                             <color key="backgroundColor" systemColor="systemRedColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="40"/>
                             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -68,7 +68,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HxA-dB-eW9">
-                            <rect key="frame" x="204" y="0.0" width="75" height="60"/>
+                            <rect key="frame" x="334" y="0.0" width="75" height="60"/>
                             <color key="backgroundColor" systemColor="systemBlueColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="40"/>
                             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -83,7 +83,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YxX-AN-s5Q">
-                            <rect key="frame" x="289" y="0.0" width="81" height="60"/>
+                            <rect key="frame" x="419" y="0.0" width="81" height="60"/>
                             <color key="backgroundColor" systemColor="systemBlueColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="40"/>
                             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -99,7 +99,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aHI-ZE-l5b">
-                            <rect key="frame" x="380" y="0.0" width="142" height="60"/>
+                            <rect key="frame" x="510" y="0.0" width="142" height="60"/>
                             <color key="backgroundColor" systemColor="systemYellowColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="40"/>
                             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -117,9 +117,10 @@
                 </stackView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="RCS-fA-tdP" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="20" id="oio-Gj-HHb"/>
-                <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="RCS-fA-tdP" secondAttribute="bottom" constant="20" id="tOG-jR-vBA"/>
+                <constraint firstItem="RCS-fA-tdP" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="10" id="oio-Gj-HHb"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="RCS-fA-tdP" secondAttribute="bottom" constant="10" id="tOG-jR-vBA"/>
             </constraints>
             <point key="canvasLocation" x="138.5185185185185" y="41.666666666666664"/>
         </view>

@@ -2,8 +2,6 @@
 //  ImageProcessor.m
 //  Classroom Visual Assistant
 //
-//  Created by Haley Zeng on 12/15/20.
-//
 
 #import "ImageProcessor.h"
 #import "ImageProcessingBridge.h"

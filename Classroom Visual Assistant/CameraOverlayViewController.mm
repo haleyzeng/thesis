@@ -2,8 +2,6 @@
 //  CameraOverlayViewController.mm
 //  Classroom Visual Assistant
 //
-//  Created by Haley Zeng on 10/4/20.
-//
 
 #import <opencv2/opencv.hpp>
 
@@ -70,14 +68,21 @@ const int kPREVIOUS_IMAGES_STACK_MAX_SIZE = 10;
 }
 
 - (IBAction)didTapStop:(id)sender {
-    [self.delegate didTapStop];
+    [self.delegate cameraOverlayViewControllerDidTapStop:self];
 }
 
 - (IBAction)didTapPause:(id)sender {
     [self setPause:!self.pauseButton.isSelected fromSender:sender];
 }
 
+- (void)setPause:(BOOL)pause {
+    [self setPause:pause fromSender:self.pauseButton];
+}
+
 - (void)setPause:(BOOL)pause fromSender:(id)sender {
+    if (pause == self.pauseButton.isSelected) {
+        return;
+    }
     /* If user manually paused, that action overrides any programmatic pause/unpause. */
     if (self.pauseByUser && sender != self.pauseButton) {
         return;
@@ -87,10 +92,14 @@ const int kPREVIOUS_IMAGES_STACK_MAX_SIZE = 10;
     
     if (!pause) {
         self.previousImageIndex = -1;
-        [self displayImage:self.previousImagesStack[[self.previousImagesStack count] - 1]];
+        if ([self.previousImagesStack count] == 0) {
+            [self displayImage:nil];
+        } else {
+            [self displayImage:self.previousImagesStack[[self.previousImagesStack count] - 1]];
+        }
     }
     
-    [self.delegate setPause:pause];
+    [self.delegate cameraOverlayViewController:self setPause:pause];
 }
 
 - (void)pushToPreviousImagesStack:(UIImage *)image {

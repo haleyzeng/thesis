@@ -2,6 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSBonjourServices</key>
+	<array>
+		<string>_cva-session._tcp</string>
+	</array>
+	<key>NSLocalNetworkUsageDescription</key>
+	<string>This app connects with a secondary device to take and transfer photos.</string>
 	<key>NSCameraUsageDescription</key>
 	<string>This app uses your device&apos;s rear camera to automatically capture images and present them on screen.</string>
 	<key>CFBundleDevelopmentRegion</key>

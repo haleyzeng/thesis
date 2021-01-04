@@ -11,6 +11,9 @@
 		5D09D1C4252AA7F7007BEDD0 /* CameraOverlayViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5D09D1C2252AA7F7007BEDD0 /* CameraOverlayViewController.mm */; };
 		5D09D1C5252AA7F7007BEDD0 /* CameraOverlayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D09D1C3252AA7F7007BEDD0 /* CameraOverlayViewController.xib */; };
 		5D0C21BF256CBE94005284B1 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D0C21BD256CBE94005284B1 /* SceneDelegate.m */; };
+		5D785C57259A5198009D2407 /* MultipeerConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D785C56259A5198009D2407 /* MultipeerConnectivity.framework */; };
+		5D7CBA3625A39D0500EC79F7 /* DualSessionCameraOverlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D7CBA3425A39D0500EC79F7 /* DualSessionCameraOverlayViewController.m */; };
+		5D7CBA3725A39D0500EC79F7 /* DualSessionCameraOverlayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D7CBA3525A39D0500EC79F7 /* DualSessionCameraOverlayViewController.xib */; };
 		5DA4EFB42588F816009E4938 /* ImageProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DA4EFB32588F816009E4938 /* ImageProcessor.m */; };
 		5DAEB86E254F725900C9A315 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DAEB86D254F725900C9A315 /* opencv2.framework */; };
 		5DAEB871254F730000C9A315 /* ImageProcessor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5DAEB86F254F730000C9A315 /* ImageProcessor.cpp */; };
@@ -48,6 +51,10 @@
 		5D09D1C3252AA7F7007BEDD0 /* CameraOverlayViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CameraOverlayViewController.xib; sourceTree = "<group>"; };
 		5D0C21BD256CBE94005284B1 /* SceneDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
 		5D0C21BE256CBE94005284B1 /* SceneDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
+		5D785C56259A5198009D2407 /* MultipeerConnectivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MultipeerConnectivity.framework; path = System/Library/Frameworks/MultipeerConnectivity.framework; sourceTree = SDKROOT; };
+		5D7CBA3325A39D0500EC79F7 /* DualSessionCameraOverlayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DualSessionCameraOverlayViewController.h; sourceTree = "<group>"; };
+		5D7CBA3425A39D0500EC79F7 /* DualSessionCameraOverlayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DualSessionCameraOverlayViewController.m; sourceTree = "<group>"; };
+		5D7CBA3525A39D0500EC79F7 /* DualSessionCameraOverlayViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DualSessionCameraOverlayViewController.xib; sourceTree = "<group>"; };
 		5DA4EFB22588F816009E4938 /* ImageProcessor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageProcessor.h; sourceTree = "<group>"; };
 		5DA4EFB32588F816009E4938 /* ImageProcessor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageProcessor.m; sourceTree = "<group>"; };
 		5DAEB86D254F725900C9A315 /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = opencv2.framework; sourceTree = "<group>"; };
@@ -79,6 +86,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5DAEB86E254F725900C9A315 /* opencv2.framework in Frameworks */,
+				5D785C57259A5198009D2407 /* MultipeerConnectivity.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,8 +101,17 @@
 				5D09D1C3252AA7F7007BEDD0 /* CameraOverlayViewController.xib */,
 				5DF90CB52563790600ED64E0 /* SettingsView.xib */,
 				5DF90CBF2563856C00ED64E0 /* FilterTableViewCell.xib */,
+				5D7CBA3525A39D0500EC79F7 /* DualSessionCameraOverlayViewController.xib */,
 			);
 			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		5D785C55259A5198009D2407 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5D785C56259A5198009D2407 /* MultipeerConnectivity.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		5DC9FD4A2522DAA600CC8A63 = {
@@ -103,6 +120,7 @@
 				5DAEB86D254F725900C9A315 /* opencv2.framework */,
 				5DC9FD552522DAA600CC8A63 /* Classroom Visual Assistant */,
 				5DC9FD542522DAA600CC8A63 /* Products */,
+				5D785C55259A5198009D2407 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -119,9 +137,9 @@
 			children = (
 				5D0C21BC256CBE0C005284B1 /* Storyboards */,
 				5DC9FD622522DAA700CC8A63 /* Assets.xcassets */,
+				5DC9FD672522DAA700CC8A63 /* Info.plist */,
 				5D0C21BE256CBE94005284B1 /* SceneDelegate.h */,
 				5D0C21BD256CBE94005284B1 /* SceneDelegate.m */,
-				5DC9FD672522DAA700CC8A63 /* Info.plist */,
 				5DC9FD682522DAA700CC8A63 /* main.m */,
 				5DC9FD562522DAA600CC8A63 /* AppDelegate.h */,
 				5DC9FD572522DAA600CC8A63 /* AppDelegate.m */,
@@ -129,6 +147,8 @@
 				5DC9FD5D2522DAA600CC8A63 /* ViewController.m */,
 				5D09D1C1252AA7F7007BEDD0 /* CameraOverlayViewController.h */,
 				5D09D1C2252AA7F7007BEDD0 /* CameraOverlayViewController.mm */,
+				5D7CBA3325A39D0500EC79F7 /* DualSessionCameraOverlayViewController.h */,
+				5D7CBA3425A39D0500EC79F7 /* DualSessionCameraOverlayViewController.m */,
 				5DA4EFB22588F816009E4938 /* ImageProcessor.h */,
 				5DA4EFB32588F816009E4938 /* ImageProcessor.m */,
 				5DAEB8742551A8B000C9A315 /* ImageProcessingBridge.h */,
@@ -202,6 +222,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D7CBA3725A39D0500EC79F7 /* DualSessionCameraOverlayViewController.xib in Resources */,
 				5DC9FD662522DAA700CC8A63 /* LaunchScreen.storyboard in Resources */,
 				5DF90CC02563856C00ED64E0 /* FilterTableViewCell.xib in Resources */,
 				5DC9FD632522DAA700CC8A63 /* Assets.xcassets in Resources */,
@@ -221,6 +242,7 @@
 				5D01C75A2564140400B3C4BF /* UserDefaultConstants.m in Sources */,
 				5DA4EFB42588F816009E4938 /* ImageProcessor.m in Sources */,
 				5DF90CBD2563809500ED64E0 /* FilterTableViewCell.m in Sources */,
+				5D7CBA3625A39D0500EC79F7 /* DualSessionCameraOverlayViewController.m in Sources */,
 				5DC9FD5E2522DAA600CC8A63 /* ViewController.m in Sources */,
 				5DC9FD582522DAA600CC8A63 /* AppDelegate.m in Sources */,
 				5DAEB871254F730000C9A315 /* ImageProcessor.cpp in Sources */,
@@ -383,7 +405,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "hhzeng.Classroom-Visual-Assistant";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -404,7 +426,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "hhzeng.Classroom-Visual-Assistant";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

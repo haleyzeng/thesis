@@ -2,8 +2,6 @@
 //  UserDefaultConstants.h
 //  Classroom Visual Assistant
 //
-//  Created by Haley Zeng on 11/17/20.
-//
 
 #import <Foundation/Foundation.h>
 

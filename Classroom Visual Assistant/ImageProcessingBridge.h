@@ -9,6 +9,6 @@
 
 @interface ImageProcessingBridge : NSObject
 
-- (UIImage *) processImage:(UIImage *)image withFilters:(NSArray *)filters;
+- (UIImage *)processImage:(UIImage *)image withFilters:(NSArray *)filters;
 
 @end

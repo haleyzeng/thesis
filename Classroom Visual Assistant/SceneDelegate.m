@@ -2,8 +2,6 @@
 //  SceneDelegate.m
 //  Classroom Visual Assistant
 //
-//  Created by Haley Zeng on 9/28/20.
-//
 
 #import "SceneDelegate.h"
 

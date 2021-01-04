@@ -2,8 +2,6 @@
 //  FilterTableViewCell.h
 //  Classroom Visual Assistant
 //
-//  Created by Haley Zeng on 11/16/20.
-//
 
 #import <UIKit/UIKit.h>
 

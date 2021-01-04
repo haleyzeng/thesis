@@ -2,8 +2,6 @@
 //  SettingsViewController.m
 //  Classroom Visual Assistant
 //
-//  Created by Haley Zeng on 11/16/20.
-//
 
 #import "SettingsViewController.h"
 #import "FilterTableViewCell.h"
