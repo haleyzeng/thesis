@@ -25,23 +25,10 @@
             <rect key="frame" x="0.0" y="0.0" width="810" height="1080"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w7s-h1-C1a">
-                    <rect key="frame" x="0.0" y="0.0" width="810" height="890"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <subviews>
-                        <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="naQ-ay-KFa">
-                            <rect key="frame" x="0.0" y="0.0" width="810" height="890"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <gestureRecognizers/>
-                        </imageView>
-                    </subviews>
-                    <viewLayoutGuide key="contentLayoutGuide" id="8zj-Qo-Zab"/>
-                    <viewLayoutGuide key="frameLayoutGuide" id="HqD-gG-kfY"/>
-                </scrollView>
                 <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="RCS-fA-tdP">
-                    <rect key="frame" x="10" y="1010" width="652" height="60"/>
+                    <rect key="frame" x="10" y="1010" width="607.5" height="60"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lNQ-N4-JAE">
+                        <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lNQ-N4-JAE">
                             <rect key="frame" x="0.0" y="0.0" width="210" height="60"/>
                             <color key="backgroundColor" systemColor="systemRedColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="40"/>
@@ -53,7 +40,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BnB-fd-RUP">
-                            <rect key="frame" x="220" y="0.0" width="104" height="60"/>
+                            <rect key="frame" x="233" y="0.0" width="104" height="60"/>
                             <color key="backgroundColor" systemColor="systemRedColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="40"/>
                             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -67,30 +54,29 @@
                                 <action selector="didTapPause:" destination="-1" eventType="touchUpInside" id="zvS-t5-RxA"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HxA-dB-eW9">
-                            <rect key="frame" x="334" y="0.0" width="75" height="60"/>
+                        <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HxA-dB-eW9">
+                            <rect key="frame" x="360" y="0.0" width="30" height="60"/>
                             <color key="backgroundColor" systemColor="systemBlueColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="40"/>
                             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <state key="normal" title="Prev">
+                            <state key="normal" title="&lt;">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
-                            <state key="disabled" title="Prev">
+                            <state key="disabled" title="&lt;">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
                             <connections>
                                 <action selector="didTapPrev:" destination="-1" eventType="touchUpInside" id="omZ-n6-GUz"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YxX-AN-s5Q">
-                            <rect key="frame" x="419" y="0.0" width="81" height="60"/>
+                        <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YxX-AN-s5Q">
+                            <rect key="frame" x="412.5" y="0.0" width="30" height="60"/>
                             <color key="backgroundColor" systemColor="systemBlueColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="40"/>
                             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <state key="normal" title="Next">
+                            <state key="normal" title="&gt;">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
-                            <state key="disabled" title="Next"/>
                             <state key="selected">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
@@ -98,8 +84,8 @@
                                 <action selector="didTapNext:" destination="-1" eventType="touchUpInside" id="Dhz-Rb-mUq"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aHI-ZE-l5b">
-                            <rect key="frame" x="510" y="0.0" width="142" height="60"/>
+                        <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="748" verticalCompressionResistancePriority="748" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aHI-ZE-l5b">
+                            <rect key="frame" x="465.5" y="0.0" width="142" height="60"/>
                             <color key="backgroundColor" systemColor="systemYellowColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="40"/>
                             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -114,13 +100,40 @@
                             </connections>
                         </button>
                     </subviews>
+                    <constraints>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="QQp-RT-rIp"/>
+                    </constraints>
                 </stackView>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w7s-h1-C1a">
+                    <rect key="frame" x="0.0" y="0.0" width="810" height="1000"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="naQ-ay-KFa">
+                            <rect key="frame" x="0.0" y="0.0" width="810" height="1000"/>
+                            <gestureRecognizers/>
+                        </imageView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="naQ-ay-KFa" firstAttribute="height" secondItem="HqD-gG-kfY" secondAttribute="height" id="Dpo-zz-eei"/>
+                        <constraint firstItem="naQ-ay-KFa" firstAttribute="leading" secondItem="8zj-Qo-Zab" secondAttribute="leading" id="c7V-x8-1XI"/>
+                        <constraint firstItem="naQ-ay-KFa" firstAttribute="width" secondItem="HqD-gG-kfY" secondAttribute="width" id="fcL-j8-pLU"/>
+                        <constraint firstItem="naQ-ay-KFa" firstAttribute="bottom" secondItem="8zj-Qo-Zab" secondAttribute="bottom" id="jbA-Dm-XHL"/>
+                        <constraint firstItem="naQ-ay-KFa" firstAttribute="top" secondItem="8zj-Qo-Zab" secondAttribute="top" id="pmd-OO-nX9"/>
+                        <constraint firstItem="naQ-ay-KFa" firstAttribute="trailing" secondItem="8zj-Qo-Zab" secondAttribute="trailing" id="zgA-7s-Xp5"/>
+                    </constraints>
+                    <viewLayoutGuide key="contentLayoutGuide" id="8zj-Qo-Zab"/>
+                    <viewLayoutGuide key="frameLayoutGuide" id="HqD-gG-kfY"/>
+                </scrollView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="RCS-fA-tdP" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="10" id="oio-Gj-HHb"/>
-                <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="RCS-fA-tdP" secondAttribute="bottom" constant="10" id="tOG-jR-vBA"/>
+                <constraint firstItem="w7s-h1-C1a" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="1fA-Ip-tqb"/>
+                <constraint firstItem="w7s-h1-C1a" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" id="3ns-eB-BMy"/>
+                <constraint firstItem="RCS-fA-tdP" firstAttribute="width" secondItem="Q5M-cg-NOt" secondAttribute="width" multiplier="0.75" id="5KI-7Q-39G"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="RCS-fA-tdP" secondAttribute="bottom" constant="10" id="UBe-bb-jjh"/>
+                <constraint firstItem="RCS-fA-tdP" firstAttribute="top" secondItem="w7s-h1-C1a" secondAttribute="bottom" constant="10" id="hKj-2r-ovT"/>
+                <constraint firstItem="w7s-h1-C1a" firstAttribute="trailing" secondItem="Q5M-cg-NOt" secondAttribute="trailing" id="lBa-sz-8sy"/>
+                <constraint firstItem="RCS-fA-tdP" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="10" id="spR-t6-qXi"/>
             </constraints>
             <point key="canvasLocation" x="138.5185185185185" y="41.666666666666664"/>
         </view>

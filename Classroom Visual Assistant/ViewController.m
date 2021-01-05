@@ -157,6 +157,10 @@ NSString *const DUAL_SESSION_CONNECTION_SERVICE_NAME = @"cva-session";
                 self.cameraOverlayVC = [[CameraOverlayViewController alloc] initWithNibName:@"CameraOverlayViewController" bundle:nil];
                 self.cameraOverlayVC.delegate = self;
                 self.imagePicker.cameraOverlayView = self.cameraOverlayVC.view;
+                
+                CGRect screenRect = self.imagePicker.view.bounds;
+                CGFloat screenWidth = CGRectGetWidth(screenRect);
+                CGFloat screenHeight = CGRectGetWidth(screenRect);
                 self.imagePicker.cameraViewTransform = CGAffineTransformTranslate(CGAffineTransformMakeScale(.15, .15), 2200, 3000);
                 break;
             }

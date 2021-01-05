@@ -4,7 +4,6 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -17,25 +16,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="810" height="1080"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="UzN-nZ-erR">
-                                <rect key="frame" x="181" y="466" width="448" height="148"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="UzN-nZ-erR">
+                                <rect key="frame" x="10" y="431.5" width="790" height="217.5"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="87m-yl-Azd">
-                                        <rect key="frame" x="0.0" y="0.0" width="448" height="70"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start a session with" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tRv-LI-RcG">
+                                        <rect key="frame" x="0.0" y="0.0" width="790" height="57.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="48"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="87m-yl-Azd">
+                                        <rect key="frame" x="0.0" y="67.5" width="790" height="70"/>
                                         <color key="backgroundColor" systemColor="systemRedColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="48"/>
-                                        <state key="normal" title="Single Device Session">
+                                        <state key="normal" title="Single Device">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
                                             <action selector="startSingleDeviceSession:" destination="BYZ-38-t0r" eventType="touchUpInside" id="UUy-FM-or0"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f2E-9d-YVH">
-                                        <rect key="frame" x="0.0" y="78" width="448" height="70"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="f2E-9d-YVH">
+                                        <rect key="frame" x="0.0" y="147.5" width="790" height="70"/>
                                         <color key="backgroundColor" systemColor="systemRedColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="48"/>
-                                        <state key="normal" title="Dual Device Session">
+                                        <state key="normal" title="Two Devices">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
@@ -48,8 +53,9 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="UzN-nZ-erR" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="47s-FM-pV9"/>
-                            <constraint firstItem="UzN-nZ-erR" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="TWo-lG-hcB"/>
+                            <constraint firstItem="UzN-nZ-erR" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="2Ut-mo-Nev"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="UzN-nZ-erR" secondAttribute="trailing" constant="10" id="DsG-LZ-03Y"/>
+                            <constraint firstItem="UzN-nZ-erR" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="FMN-zQ-9US"/>
                         </constraints>
                     </view>
                     <connections>
