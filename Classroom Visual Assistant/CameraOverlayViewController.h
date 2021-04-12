@@ -15,6 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)cameraOverlayViewController:(CameraOverlayViewController *)viewController setPause:(BOOL)shouldPause;
 
+- (void)cameraOverlayViewController:(CameraOverlayViewController *)viewController setTimerLength:(CGFloat)timerLength;
+
 @end
 
 @interface CameraOverlayViewController : UIViewController

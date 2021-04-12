@@ -13,6 +13,7 @@ std::map<std::string, filterFunc> filterNameFuncMap = {
     {"HISTOGRAM_EQUALIZE", ImageProcessor::histogramEqualize},
     {"ISOLATE_BOARD", ImageProcessor::isolateBoard},
     {"SIMPLE_THRESHOLD", ImageProcessor::simpleThreshold},
+    {"GREYSCALE", ImageProcessor::getGrayscale},
 };
 
 Mat ImageProcessor::applyFilters(Mat image, std::vector<std::string> filters) {
@@ -29,6 +30,9 @@ Mat ImageProcessor::applyFilters(Mat image, std::vector<std::string> filters) {
 }
 
 Mat ImageProcessor::getGrayscale(Mat image) {
+    if (image.channels() == 1) {
+        return image;
+    }
     Mat processedImage;
     cvtColor(image, processedImage, COLOR_RGB2GRAY);
     return processedImage;
@@ -112,12 +116,6 @@ std::vector<Point2f> orderRectPoints(std::vector<Point2f> points) {
     return sorted;
 }
 
-void printPoints(std::vector<Point2f> points) {
-    for (int j = 0; j < points.size(); j++) {
-        cout << "Point(" << points[j].x << ", " << points[j].y << ")\n";
-    }
-}
-
 double getWidthForRectPoints(std::vector<Point2f> pts) {
     std::vector<Point2f> orderedPts = orderRectPoints(pts);
     
@@ -160,33 +158,33 @@ double getAreaRatioRectToImage(std::vector<Point2f> pts, Mat image) {
 
 Mat ImageProcessor::isolateBoard(Mat image) {
     Mat preppedImage = cannyEdgeDetect(gaussianBlur(binarize(image)));
-    
+
     // Find the contours
     std::vector<std::vector<cv::Point>> contours;
     findContours(preppedImage, contours, RETR_LIST, CHAIN_APPROX_SIMPLE);
-    
+
     // Draw the contours onto a new image
     Mat contourImage(image.size(), CV_8UC1, Scalar(0,0,0));
     drawContours(contourImage, contours, -1, Scalar(255, 255, 255));
-    
+
     // Do morphological closing to fill in gaps in contours
     Mat closedImage;
     morphologyEx(contourImage, closedImage, MORPH_CLOSE, getStructuringElement(MORPH_RECT, Size(5, 5)), Point(-1,-1), 5);
-    
+
     // Do morphological erosion to decrease contour thickness and remove noise
     Mat erodedImage;
     erode(closedImage, erodedImage, getStructuringElement(MORPH_RECT, Size(5,5)));
-    
+
     // Convert color from white-on-black to black-on-white to prepare for second contour detection
     preppedImage = colorInvert(erodedImage);
-    
+
     // Find contours of morpholically processed image
     std::vector<std::vector<cv::Point>> finalContours;
     findContours(preppedImage, finalContours, RETR_LIST, CHAIN_APPROX_SIMPLE);
-    
+
     // Sort contours by area in descending order
     std::sort(finalContours.begin(), finalContours.end(), compareContourAreas);
-    
+
     // Find the largest contour that reasonably represents the board.
     // Reasonable means that it approximates to a quadrangle and that the amount of area
     // that it covers in the image is not trivially little or great.
@@ -194,18 +192,15 @@ Mat ImageProcessor::isolateBoard(Mat image) {
     std::vector<Point2f> srcPts;
     for (int i = 0; i < finalContours.size(); i++) {
         int perimeter = arcLength(finalContours[i], true);
-        
+
         // Give more leeway in quadrangle approximation, but exclude the rect that is
         // just the whole image by checking that its area is not too big
         approxPolyDP(finalContours[i], srcPts, 0.05 * perimeter, true);
         if (srcPts.size() == 4) {
             double areaRatio = getAreaRatioRectToImage(srcPts, image);
-            cout << "area ratio: " << areaRatio << "\n";
             if (areaRatio < 0.05) { // too small; rest of contours will be smaller so stop looking
                 break;
             } else if (areaRatio < 0.95) { // good size
-                cout << "Found a reasonable contour at index " << i << "\n";
-                printPoints(srcPts);
                 contourIndex = i;
                 break;
             } else { // too big; keep looking
@@ -213,48 +208,38 @@ Mat ImageProcessor::isolateBoard(Mat image) {
             }
         }
     }
-    
-    
+
+
     if (contourIndex == -1) {
-        cout << "Could not find contour for board.\n";
         return image;
     } else {
         srcPts = orderRectPoints(srcPts);
-        
+
         Point2f bl = srcPts[0];
         Point2f br = srcPts[1];
         Point2f tr = srcPts[2];
         Point2f tl = srcPts[3];
-        
+
         double width_bottom = distance(bl, br);
         double width_top = distance(tl, tr);
         double finalWidth = max(width_bottom, width_top);
-        
+
         double height_left = distance(tl, bl);
         double height_right = distance(tr, br);
         double finalHeight = max(height_left, height_right);
-        
+
         std::vector<Point2f> dstPts;
         dstPts.push_back(Point2f(0,0));
         dstPts.push_back(Point2f(finalWidth, 0));
         dstPts.push_back(Point2f(finalWidth, finalHeight));
         dstPts.push_back(Point2f(0,finalHeight));
-        
-        //        cout << "Source points\n";
-        //        printPoints(srcPts);
-        //        cout << "Dest points\n";
-        //        printPoints(dstPts);
-        //        cout << "width: " << finalWidth << "\n";
-        //        cout << "height: " << finalHeight << "\n";
-        //        cout << "srcPts length = " << srcPts.size() << "\n";
-        //        cout << "dstPts length = " << dstPts.size() << "\n";
-        
+
         Mat matrix = getPerspectiveTransform(srcPts, dstPts);
-        
+
         Mat transformedImage;
-        
+
         warpPerspective(image, transformedImage, matrix, Size(finalWidth, finalHeight));
-        
+
         return transformedImage;
     }
 }

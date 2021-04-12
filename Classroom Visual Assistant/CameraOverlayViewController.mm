@@ -19,16 +19,24 @@
 @property (weak, nonatomic) IBOutlet UIButton *prevImageButton;
 @property (weak, nonatomic) IBOutlet UIButton *nextImageButton;
 @property (weak, nonatomic) IBOutlet UIButton *settingsButton;
+@property (weak, nonatomic) IBOutlet UIButton *starButton;
 
 @property (strong, nonatomic) ImageProcessor *imageProcessor;
-@property (strong, nonatomic) NSMutableArray *previousImagesStack;
+
+@property (strong, nonatomic) NSMutableArray<UIImage *> *previousImagesStack;
+@property (strong, nonatomic) NSMutableArray<NSNumber *> *isPreviousImageStarred;
 @property (nonatomic) int previousImageIndex;
+
 @property (nonatomic) BOOL pauseByUser;
+
+@property (strong, nonatomic) NSString *timestamp;
+@property (strong, nonatomic) NSString *directoryPath;
+@property (nonatomic) int savedPhotoIndex;
 @end
 
 @implementation CameraOverlayViewController
 
-const int kPREVIOUS_IMAGES_STACK_MAX_SIZE = 10;
+const int kPREVIOUS_IMAGES_STACK_MAX_SIZE = 5;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -38,6 +46,7 @@ const int kPREVIOUS_IMAGES_STACK_MAX_SIZE = 10;
     self.scrollView.delegate = self;
     
     self.previousImagesStack = [NSMutableArray new];
+    self.isPreviousImageStarred = [NSMutableArray new];
     self.previousImageIndex = -1;
     [self setPrevImageButtonEnabled];
     [self setNextImageButtonEnabled];
@@ -50,6 +59,9 @@ const int kPREVIOUS_IMAGES_STACK_MAX_SIZE = 10;
         [userDefaults setObject:@[] forKey:APPLIED_FILTERS_USER_DEFAULTS_KEY];
     }
     [self.imageProcessor setFiltersList:filters];
+    
+    self.timestamp = [NSString stringWithFormat:@"%ld",(long)[[NSDate date] timeIntervalSince1970]];
+    self.savedPhotoIndex = 0;
 }
 
 - (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
@@ -60,6 +72,7 @@ const int kPREVIOUS_IMAGES_STACK_MAX_SIZE = 10;
     UIImage *processedImage = [self.imageProcessor processImage:image];
     [self pushToPreviousImagesStack:processedImage];
     [self setPrevImageButtonEnabled];
+    [self setStarButtonSelected];
     [self displayImage:processedImage];
 }
 
@@ -68,6 +81,7 @@ const int kPREVIOUS_IMAGES_STACK_MAX_SIZE = 10;
 }
 
 - (IBAction)didTapStop:(id)sender {
+    [self savePreviousImagesToStorage];
     [self.delegate cameraOverlayViewControllerDidTapStop:self];
 }
 
@@ -107,8 +121,13 @@ const int kPREVIOUS_IMAGES_STACK_MAX_SIZE = 10;
         NSLog(@"Error: pushToPreviousImagesStack called when user is viewing a previous image.");
     } else {
         [self.previousImagesStack addObject:image];
+        [self.isPreviousImageStarred addObject:@NO];
         if ([self.previousImagesStack count] > kPREVIOUS_IMAGES_STACK_MAX_SIZE) {
+            if ([self.isPreviousImageStarred[0] boolValue]) {
+                [self saveImageToStorage:self.previousImagesStack[0]];
+            }
             [self.previousImagesStack removeObjectAtIndex:0];
+            [self.isPreviousImageStarred removeObjectAtIndex:0];
         }
     }
 }
@@ -122,10 +141,10 @@ const int kPREVIOUS_IMAGES_STACK_MAX_SIZE = 10;
     } else {
         self.previousImageIndex -= 1;
     }
-    NSLog(@"didTapPrev: self.previousImageIndex set to %d\n", self.previousImageIndex);
     [self setPrevImageButtonEnabled];
     [self setNextImageButtonEnabled];
     [self setImageBasedOnPreviousImageIndex];
+    [self setStarButtonSelected];
 }
 
 - (IBAction)didTapNext:(id)sender {
@@ -134,10 +153,10 @@ const int kPREVIOUS_IMAGES_STACK_MAX_SIZE = 10;
     } else {
         self.previousImageIndex += 1;
     }
-    NSLog(@"didTapNext: self.previousImageIndex set to %d\n", self.previousImageIndex);
     [self setPrevImageButtonEnabled];
     [self setNextImageButtonEnabled];
     [self setImageBasedOnPreviousImageIndex];
+    [self setStarButtonSelected];
 }
 
 - (void)setImageBasedOnPreviousImageIndex {
@@ -160,16 +179,75 @@ const int kPREVIOUS_IMAGES_STACK_MAX_SIZE = 10;
     [self.nextImageButton setAlpha:enabled ? 1.0 : 0.5];
 }
 
+-(void)setStarButtonSelected {
+    NSInteger i = self.previousImageIndex;
+    if (self.previousImageIndex == -1) {
+        i = [self.previousImagesStack count] - 1;
+    }
+    [self.starButton setSelected:[self.isPreviousImageStarred[i] boolValue]];
+}
+
+- (IBAction)didTapStar:(id)sender {
+    BOOL selectedValue = !self.starButton.selected;
+    [self.starButton setSelected:selectedValue];
+    NSInteger i = self.previousImageIndex;
+    if (self.previousImageIndex == -1) {
+        i = [self.previousImagesStack count] - 1;
+    }
+    self.isPreviousImageStarred[i] = [NSNumber numberWithBool:selectedValue];
+}
+
+- (void)savePreviousImagesToStorage {
+    for (int i = 0; i < [self.isPreviousImageStarred count]; i++) {
+        if ([self.isPreviousImageStarred[i] boolValue]) {
+            [self saveImageToStorage:self.previousImagesStack[i]];
+        }
+    }
+}
+
+- (void)saveImageToStorage:(UIImage *)image {
+    NSFileManager *filemgr = [NSFileManager defaultManager];
+
+    if (self.directoryPath == nil) {
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *documentsDirectory = [paths objectAtIndex:0];
+        self.directoryPath = [documentsDirectory stringByAppendingPathComponent:self.timestamp];
+        NSURL *url = [NSURL fileURLWithPath:self.directoryPath];
+        NSError *error = nil;
+        BOOL succ = [filemgr createDirectoryAtURL:url withIntermediateDirectories:NO attributes:nil error:&error];
+        if (!succ) {
+            NSLog(@"Failed to create directory for session photo storage.");
+            NSLog(@"Error: %@", error.localizedDescription);
+            return;
+        }
+    }
+    
+    NSString *filename = [NSString stringWithFormat:@"%d.jpg", self.savedPhotoIndex];
+    NSURL *url = [NSURL fileURLWithPath:[self.directoryPath stringByAppendingPathComponent:filename]];
+    NSData *data = UIImageJPEGRepresentation(image, 0.7);
+    NSError *error = nil;
+    BOOL succ = [data writeToURL:url options:NSDataWritingAtomic error:&error];
+    if (!succ) {
+        NSLog(@"Failed to save photo to storage.");
+        NSLog(@"Error: %@", error.localizedDescription);
+    }
+    self.savedPhotoIndex += 1;
+}
+
 - (IBAction)didTapSettings:(id)sender {
     [self setPause:YES fromSender:sender];
+    
     SettingsViewController *settingsVC = [SettingsViewController new];
-    settingsVC.modalPresentationStyle = UIModalPresentationPopover;
     settingsVC.delegate = self;
-    [self presentViewController:settingsVC animated:YES completion:nil];
-    UIPopoverPresentationController *popController = [settingsVC popoverPresentationController];
+    
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:settingsVC];
+    navController.modalPresentationStyle = UIModalPresentationPopover;
+    UIPopoverPresentationController *popController = [navController popoverPresentationController];
        popController.permittedArrowDirections = UIPopoverArrowDirectionAny;
        popController.sourceView = self.settingsButton;
        popController.delegate = self;
+    
+    [self presentViewController:navController animated:YES completion:nil];
 }
 
 - (void)presentationControllerDidDismiss:(UIPresentationController *)presentationController {
@@ -183,6 +261,11 @@ const int kPREVIOUS_IMAGES_STACK_MAX_SIZE = 10;
 - (void)settingsViewController:(SettingsViewController *)settingsViewController didChangeFilterSelectionsTo:(NSArray *)filterSelections {
     [[NSUserDefaults standardUserDefaults] setObject:filterSelections forKey:APPLIED_FILTERS_USER_DEFAULTS_KEY];
     [self.imageProcessor setFiltersList:filterSelections];
+}
+
+- (void)settingsViewController:(SettingsViewController *)settingsViewController didChangeTimerLengthTo:(CGFloat)timerLength {
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithFloat:timerLength] forKey:TIMER_LENGTH_USER_DEFAULTS_KEY];
+    [self.delegate cameraOverlayViewController:self setTimerLength:timerLength];
 }
 
 @end

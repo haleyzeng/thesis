@@ -6,6 +6,7 @@
 #import <MultipeerConnectivity/MultipeerConnectivity.h>
 #import "CameraOverlayViewController.h"
 #import "DualSessionCameraOverlayViewController.h"
+#import "UserDefaultConstants.h"
 #import "ViewController.h"
 
 typedef NS_ENUM(NSInteger, DualSessionDeviceType) {
@@ -20,7 +21,8 @@ typedef NS_ENUM(NSInteger, CVASessionType) {
 
 typedef NS_ENUM(NSInteger, MCSessionDataType) {
     MCSessionDataTypeImage,
-    MCSessionDataTypePauseCommand
+    MCSessionDataTypePauseCommand,
+    MCSessionDataTypeTimerLength
 };
 
 
@@ -42,7 +44,7 @@ MCSessionDelegate
 @property (strong, nonatomic) CameraOverlayViewController *cameraOverlayVC;
 @property (strong, nonatomic) DualSessionCameraOverlayViewController *dualSessionCameraOverlayVC;
 @property (strong, nonatomic) NSTimer *timer;
-
+@property (nonatomic) CGFloat timerLength;
 
 @property (nonatomic) DualSessionDeviceType deviceType;
 @property (strong, nonatomic) MCPeerID *thisPeerID;
@@ -55,7 +57,6 @@ MCSessionDelegate
 
 @implementation ViewController
 
-const float kTIMER_LENGTH = 5.0;
 NSString *const DUAL_SESSION_CONNECTION_SERVICE_NAME = @"cva-session";
 
 - (void)viewDidLoad {
@@ -158,9 +159,6 @@ NSString *const DUAL_SESSION_CONNECTION_SERVICE_NAME = @"cva-session";
                 self.cameraOverlayVC.delegate = self;
                 self.imagePicker.cameraOverlayView = self.cameraOverlayVC.view;
                 
-                CGRect screenRect = self.imagePicker.view.bounds;
-                CGFloat screenWidth = CGRectGetWidth(screenRect);
-                CGFloat screenHeight = CGRectGetWidth(screenRect);
                 self.imagePicker.cameraViewTransform = CGAffineTransformTranslate(CGAffineTransformMakeScale(.15, .15), 2200, 3000);
                 break;
             }
@@ -175,6 +173,9 @@ NSString *const DUAL_SESSION_CONNECTION_SERVICE_NAME = @"cva-session";
         [self presentViewController:self.imagePicker
                            animated:YES
                          completion:nil];
+        
+        NSNumber *savedTimerLength = [[NSUserDefaults standardUserDefaults] objectForKey:TIMER_LENGTH_USER_DEFAULTS_KEY];
+        self.timerLength = savedTimerLength ? [savedTimerLength floatValue] : DEFAULT_TIMER_LENGTH;
         [self startTimer];
     }
 }
@@ -194,7 +195,7 @@ NSString *const DUAL_SESSION_CONNECTION_SERVICE_NAME = @"cva-session";
 
 - (void)startTimer {
     [self endTimer];
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:kTIMER_LENGTH target:self selector:@selector(timerFired:) userInfo:nil repeats:YES];
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:self.timerLength target:self selector:@selector(timerFired:) userInfo:nil repeats:YES];
 }
 
 - (void)endTimer {
@@ -209,6 +210,16 @@ NSString *const DUAL_SESSION_CONNECTION_SERVICE_NAME = @"cva-session";
         [self.imagePicker takePicture];
     } else {
         [self endTimer];
+    }
+}
+
+- (void)sendTimerLengthToPeer:(CGFloat)timerLength {
+    if (self.mcSession && self.secondDevicePeerID) {
+        NSInteger dataType = MCSessionDataTypeTimerLength;
+        NSMutableData *allData = [NSMutableData dataWithBytes:&dataType length:sizeof(dataType)];
+        NSData *floatData = [NSData dataWithBytes:&timerLength length:sizeof(floatData)];
+        [allData appendData:floatData];
+        [self.mcSession sendData:allData toPeers:@[self.secondDevicePeerID] withMode:MCSessionSendDataReliable error:nil];
     }
 }
 
@@ -233,7 +244,6 @@ NSString *const DUAL_SESSION_CONNECTION_SERVICE_NAME = @"cva-session";
 }
 
 - (void)handlePeerDisconnected {
-    NSLog(@"Peer disconnected");
     UIAlertController *alert = [UIAlertController
                                 alertControllerWithTitle:@"Disconnected"
                                 message:@"The other device disconnected. Ending session."
@@ -270,6 +280,16 @@ NSString *const DUAL_SESSION_CONNECTION_SERVICE_NAME = @"cva-session";
     } else {
         [self startTimer];
     }
+}
+
+- (void)cameraOverlayViewController:(CameraOverlayViewController *)viewController setTimerLength:(CGFloat)timerLength {
+    [self setTimerLengthTo:timerLength];
+    [self sendTimerLengthToPeer:timerLength];
+}
+
+- (void)setTimerLengthTo:(CGFloat)timerLength {
+    self.timerLength = timerLength;
+    [self startTimer];
 }
 
 #pragma mark - DualSessionCameraOverlayViewControllerDelegate
@@ -333,6 +353,16 @@ NSString *const DUAL_SESSION_CONNECTION_SERVICE_NAME = @"cva-session";
                 });
                 break;
             }
+            case MCSessionDataTypeTimerLength: {
+                CGFloat timerLength;
+                [contents getBytes:&timerLength length:sizeof(timerLength)];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    if (timerLength != 0) {
+                        [self setTimerLengthTo:timerLength];
+                    }
+                });
+                break;
+            }
         }
     }
 }
@@ -360,6 +390,11 @@ NSString *const DUAL_SESSION_CONNECTION_SERVICE_NAME = @"cva-session";
                     self.cameraOverlayVC.delegate = self;
                     self.cameraOverlayVC.modalPresentationStyle = UIModalPresentationFullScreen;
                     [self presentViewController:self.cameraOverlayVC animated:YES completion:nil];
+                    [self sendTimerLengthToPeer:self.timerLength];
+                    
+                    NSNumber *savedTimerLength = [[NSUserDefaults standardUserDefaults] objectForKey:TIMER_LENGTH_USER_DEFAULTS_KEY];
+                    self.timerLength = savedTimerLength ? [savedTimerLength floatValue] : DEFAULT_TIMER_LENGTH;
+                    [self sendTimerLengthToPeer:self.timerLength];
                 });
                 break;
             }
@@ -384,7 +419,6 @@ NSString *const DUAL_SESSION_CONNECTION_SERVICE_NAME = @"cva-session";
 - (void)advertiser:(MCNearbyServiceAdvertiser *)advertiser didReceiveInvitationFromPeer:(MCPeerID *)peerID withContext:(NSData *)context invitationHandler:(void (^)(BOOL, MCSession * _Nullable))invitationHandler {
     invitationHandler(YES, self.mcSession);
 }
-
 
 @end
 

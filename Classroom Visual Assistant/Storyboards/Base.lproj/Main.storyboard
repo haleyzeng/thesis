@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="UzN-nZ-erR">
-                                <rect key="frame" x="10" y="431.5" width="790" height="217.5"/>
+                                <rect key="frame" x="10" y="391.5" width="790" height="297.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start a session with" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tRv-LI-RcG">
                                         <rect key="frame" x="0.0" y="0.0" width="790" height="57.5"/>
@@ -47,6 +47,17 @@
                                             <action selector="startDualDeviceSession:" destination="BYZ-38-t0r" eventType="touchUpInside" id="k6H-dS-nJU"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LKj-zh-dmj">
+                                        <rect key="frame" x="0.0" y="227.5" width="790" height="70"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="48"/>
+                                        <state key="normal" title="View Past Sessions">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="D19-pV-wH6" kind="show" id="KxL-h1-6jJ"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                             </stackView>
                         </subviews>
@@ -65,10 +76,73 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-184" y="42"/>
+            <point key="canvasLocation" x="-994" y="117"/>
+        </scene>
+        <!--Past Sessions-->
+        <scene sceneID="OG5-o9-cfb">
+            <objects>
+                <viewController title="Past Sessions" id="VQg-2b-ewh" customClass="PastSessionsViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3fu-24-X0a">
+                        <rect key="frame" x="0.0" y="0.0" width="704" height="995.5"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="y8A-ai-sYL">
+                                <rect key="frame" x="0.0" y="56" width="704" height="939.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="pastSessionCell" id="BB1-0V-aDb">
+                                        <rect key="frame" x="0.0" y="28" width="704" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="BB1-0V-aDb" id="NJ0-E8-8Xl">
+                                            <rect key="frame" x="0.0" y="0.0" width="704" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="oEP-Kn-2ZB"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="oEP-Kn-2ZB" firstAttribute="trailing" secondItem="y8A-ai-sYL" secondAttribute="trailing" id="Dmt-cS-0TC"/>
+                            <constraint firstItem="y8A-ai-sYL" firstAttribute="leading" secondItem="oEP-Kn-2ZB" secondAttribute="leading" id="ZQ1-7f-M5t"/>
+                            <constraint firstItem="oEP-Kn-2ZB" firstAttribute="bottom" secondItem="y8A-ai-sYL" secondAttribute="bottom" id="fCs-Q0-hE6"/>
+                            <constraint firstItem="y8A-ai-sYL" firstAttribute="top" secondItem="oEP-Kn-2ZB" secondAttribute="top" id="rNR-a3-Ygb"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="PCJ-hR-e5f"/>
+                    <connections>
+                        <outlet property="tableView" destination="y8A-ai-sYL" id="0tJ-Zt-7vi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ldb-fG-vTP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1388.148148148148" y="41.666666666666664"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="1xJ-oZ-PHM">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="D19-pV-wH6" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="xuM-ev-weF"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5is-Qp-bag">
+                        <rect key="frame" x="0.0" y="0.0" width="704" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="VQg-2b-ewh" kind="relationship" relationship="rootViewController" id="cQ5-kH-7WB"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ED3-VL-Q74" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="630.37037037037032" y="41.666666666666664"/>
         </scene>
     </scenes>
     <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

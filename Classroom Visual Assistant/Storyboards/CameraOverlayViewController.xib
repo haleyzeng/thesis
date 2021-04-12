@@ -3,6 +3,7 @@
     <device id="ipad10_2" orientation="portrait" layout="fullscreen" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -16,6 +17,7 @@
                 <outlet property="prevImageButton" destination="HxA-dB-eW9" id="q6z-Al-Bdx"/>
                 <outlet property="scrollView" destination="w7s-h1-C1a" id="tqY-h1-DzP"/>
                 <outlet property="settingsButton" destination="aHI-ZE-l5b" id="vVm-p4-hiJ"/>
+                <outlet property="starButton" destination="H0l-WN-oVy" id="Wid-jO-rZ8"/>
                 <outlet property="stopButton" destination="lNQ-N4-JAE" id="NDT-eo-Iqt"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -29,10 +31,10 @@
                     <rect key="frame" x="10" y="1010" width="607.5" height="60"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lNQ-N4-JAE">
-                            <rect key="frame" x="0.0" y="0.0" width="210" height="60"/>
+                            <rect key="frame" x="0.0" y="0.0" width="67" height="60"/>
                             <color key="backgroundColor" systemColor="systemRedColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                            <state key="normal" title="End Session">
+                            <state key="normal" title="End">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
                             <connections>
@@ -40,7 +42,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BnB-fd-RUP">
-                            <rect key="frame" x="233" y="0.0" width="104" height="60"/>
+                            <rect key="frame" x="108.5" y="0.0" width="104" height="60"/>
                             <color key="backgroundColor" systemColor="systemRedColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="40"/>
                             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -55,7 +57,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HxA-dB-eW9">
-                            <rect key="frame" x="360" y="0.0" width="30" height="60"/>
+                            <rect key="frame" x="254" y="0.0" width="30" height="60"/>
                             <color key="backgroundColor" systemColor="systemBlueColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="40"/>
                             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -70,7 +72,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YxX-AN-s5Q">
-                            <rect key="frame" x="412.5" y="0.0" width="30" height="60"/>
+                            <rect key="frame" x="325.5" y="0.0" width="30" height="60"/>
                             <color key="backgroundColor" systemColor="systemBlueColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="40"/>
                             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -82,6 +84,20 @@
                             </state>
                             <connections>
                                 <action selector="didTapNext:" destination="-1" eventType="touchUpInside" id="Dhz-Rb-mUq"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H0l-WN-oVy">
+                            <rect key="frame" x="397" y="0.0" width="27" height="60"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                            <color key="tintColor" systemColor="systemYellowColor"/>
+                            <state key="normal">
+                                <imageReference key="image" image="star" catalog="system" symbolScale="large"/>
+                            </state>
+                            <state key="selected">
+                                <imageReference key="image" image="star.fill" catalog="system" symbolScale="large"/>
+                            </state>
+                            <connections>
+                                <action selector="didTapStar:" destination="-1" eventType="touchUpInside" id="jgb-WM-LhA"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="748" verticalCompressionResistancePriority="748" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aHI-ZE-l5b">
@@ -139,6 +155,8 @@
         </view>
     </objects>
     <resources>
+        <image name="star" catalog="system" width="128" height="116"/>
+        <image name="star.fill" catalog="system" width="128" height="116"/>
         <systemColor name="systemBlueColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

@@ -10,6 +10,8 @@
 	<string>This app connects with a secondary device to take and transfer photos.</string>
 	<key>NSCameraUsageDescription</key>
 	<string>This app uses your device&apos;s rear camera to automatically capture images and present them on screen.</string>
+    <key>NSPhotoLibraryAddUsageDescription</key>
+    <string>This app needs access to your local file system to save this photo.</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>

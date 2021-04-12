@@ -5,120 +5,130 @@
 
 #import "SettingsViewController.h"
 #import "FilterTableViewCell.h"
+#import "FilterSettingsViewController.h"
 #import "UserDefaultConstants.h"
 
-@interface SettingsViewController () <UITableViewDataSource, UITableViewDelegate, FilterTableViewCellDelegate>
+@interface SettingsViewController () <
+FilterTableViewCellDelegate,
+FilterSettingsViewControllerDelegate,
+UITableViewDelegate,
+UITableViewDataSource
+>
 
-@property (weak, nonatomic) IBOutlet UIButton *saveButton;
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) NSMutableArray *appliedFilters;
-@property (strong, nonatomic) NSMutableArray *notAppliedFilters;
+@property (weak, nonatomic) IBOutlet UIButton *timerLengthButton;
+@property (weak, nonatomic) IBOutlet UIButton *filterSelectionButton;
+@property (strong, nonatomic) NSArray *appliedFilters;
+@property (strong, nonatomic) FilterSettingsViewController *filterSettingsVC;
+@property (strong, nonatomic) UITableViewController *timerTableVC;
+@property (nonatomic) NSInteger timerLengthIndex;
+@property (strong, nonatomic) NSArray<NSNumber *> *timerLengths;
+
 @end
+
+const int kSEC_TO_MIN = 60;
 
 @implementation SettingsViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-
-    NSArray *applied = [[NSUserDefaults standardUserDefaults] objectForKey:APPLIED_FILTERS_USER_DEFAULTS_KEY];
+    self.appliedFilters = [[NSUserDefaults standardUserDefaults] objectForKey:APPLIED_FILTERS_USER_DEFAULTS_KEY];
+    self.filterSettingsVC = [[FilterSettingsViewController alloc] initWithAppliedFilters:self.appliedFilters];
+    self.filterSettingsVC.delegate = self;
     
-    self.appliedFilters = [[NSMutableArray alloc] initWithArray:applied];
+    NSNumber *savedTimerLength = [[NSUserDefaults standardUserDefaults] objectForKey:TIMER_LENGTH_USER_DEFAULTS_KEY];
+    CGFloat timerLength = savedTimerLength ? [savedTimerLength floatValue] : DEFAULT_TIMER_LENGTH;
     
-    self.notAppliedFilters = [NSMutableArray new];
-    for (int i = 0; i < SIZE_OF_FILTER_NAMES_ARRAY; i++) {
-        if (![self.appliedFilters containsObject:FILTER_NAMES_ARRAY[i]]) {
-            [self.notAppliedFilters addObject:FILTER_NAMES_ARRAY[i]];
+    self.timerLengthIndex = -1;
+    NSMutableArray *timerLengths = [NSMutableArray new];
+    for (int i = 0; i < SIZE_OF_TIMER_LENGTHS_ARRAY; i++) {
+        [timerLengths addObject:[NSNumber numberWithFloat:TIMER_LENGTHS_ARRAY[i]]];
+        if (TIMER_LENGTHS_ARRAY[i] == timerLength) {
+            self.timerLengthIndex = i;
         }
     }
+    self.timerLengths = [timerLengths copy];
     
-    self.tableView.delegate = self;
-    self.tableView.dataSource = self;
-    [self.tableView setEditing:YES];
+    if (self.timerLengthIndex == -1) {
+        self.timerLengthIndex = 0;
+        [self.delegate settingsViewController:self didChangeTimerLengthTo:[self.timerLengths[0] floatValue]];
+    }
+    [self updateButtonLabels];
+}
+
+- (void)updateButtonLabels {
+    [self.filterSelectionButton setTitle:[NSString stringWithFormat:@"%ld applied", [self.appliedFilters count]] forState:UIControlStateNormal];
+    NSString *timerLengthButtonText = [self stringForTimerLengthInSeconds:(NSInteger)[self.timerLengths[self.timerLengthIndex] floatValue]];
+    [self.timerLengthButton setTitle:timerLengthButtonText forState:UIControlStateNormal];
+}
+
+- (IBAction)didTapFilterSelectionButton:(id)sender {
+    [self.navigationController pushViewController:self.filterSettingsVC animated:YES];
+}
+
+- (void)filterSettingsViewController:(FilterSettingsViewController *)filterSettingsVC didChangeFilterSelectionsTo:(NSArray *)appliedFilters {
+    self.appliedFilters = appliedFilters;
+    [self updateButtonLabels];
+    [self.delegate settingsViewController:self didChangeFilterSelectionsTo:appliedFilters];
+}
+
+- (IBAction)didTapTimerLengthButton:(id)sender {
+    self.timerTableVC = [UITableViewController new];
+    self.timerTableVC.tableView.delegate = self;
+    self.timerTableVC.tableView.dataSource = self;
     UINib *nib = [UINib nibWithNibName:@"FilterTableViewCell" bundle:nil];
-        [self.tableView registerNib:nib forCellReuseIdentifier:@"filterCell"];
+        [self.timerTableVC.tableView registerNib:nib forCellReuseIdentifier:@"filterCell"];
+    [self.navigationController pushViewController:self.timerTableVC animated:YES];
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
+    return 1;
 }
 
-- (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (section == 0) {
-        return self.appliedFilters.count;
-    } else {
-        return self.notAppliedFilters.count;
-    }
-}
-
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    if (section == 0) {
-        return @"Applied";
-    } else {
-        return @"Not Applied";
-    }
-}
-
-- (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    FilterTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"filterCell"];
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    FilterTableViewCell *cell = [self.timerTableVC.tableView dequeueReusableCellWithIdentifier:@"filterCell"];
     cell.delegate = self;
-    if (indexPath.section == 0) {
-        cell.label.text = self.appliedFilters[indexPath.row];
-        [cell.button setTitle:@"-" forState:UIControlStateNormal];
+
+    CGFloat totSecs = [self.timerLengths[indexPath.row] floatValue];
+    
+    cell.label.text = [self stringForTimerLengthInSeconds:(NSInteger)totSecs];
+    
+    if (indexPath.row == self.timerLengthIndex) {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
     } else {
-        cell.label.text = self.notAppliedFilters[indexPath.row];
-        [cell.button setTitle:@"+" forState:UIControlStateNormal];
+        cell.accessoryType = UITableViewCellAccessoryNone;
     }
     return cell;
 }
 
-- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return UITableViewCellEditingStyleNone;
-}
-
-- (BOOL)tableView:(UITableView *)tableView shouldIndentWhileEditingRowAtIndexPath:(NSIndexPath *)indexPath {
-    return NO;
-}
-
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    return indexPath.section == 0;
-}
-
-- (NSIndexPath *)tableView:(UITableView *)tableView targetIndexPathForMoveFromRowAtIndexPath:(NSIndexPath *)sourceIndexPath toProposedIndexPath:(NSIndexPath *)proposedDestinationIndexPath {
-  if (sourceIndexPath.section != proposedDestinationIndexPath.section) {
-    NSInteger row = 0;
-    if (sourceIndexPath.section < proposedDestinationIndexPath.section) {
-      row = [tableView numberOfRowsInSection:sourceIndexPath.section] - 1;
+- (NSString *)stringForTimerLengthInSeconds:(NSInteger)seconds {
+    NSInteger mins = seconds / kSEC_TO_MIN;
+    NSInteger secs = seconds % kSEC_TO_MIN;
+    if (mins == 0) {
+        return [NSString stringWithFormat:@"%ld sec", secs];
+    } else if (secs == 0) {
+        return [NSString stringWithFormat:@"%ld min", mins];
+    } else {
+        return [NSString stringWithFormat:@"%ld min %ld sec", mins, secs];
     }
-    return [NSIndexPath indexPathForRow:row inSection:sourceIndexPath.section];
-  }
-
-  return proposedDestinationIndexPath;
 }
 
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
-    [self.appliedFilters exchangeObjectAtIndex:sourceIndexPath.row withObjectAtIndex:destinationIndexPath.row];
-    [self.tableView reloadData];
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    if (tableView == self.timerTableVC.tableView) {
+        return [self.timerLengths count];
+    } else {
+        return 0;
+    }
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    self.timerLengthIndex = indexPath.row;
+    CGFloat timerLength = [self.timerLengths[self.timerLengthIndex] floatValue];
+    [self.delegate settingsViewController:self didChangeTimerLengthTo:timerLength];
+    [self.timerTableVC.tableView reloadData];
+    [self updateButtonLabels];
 }
 
 - (void)filterTableViewCellDidTapButton:(FilterTableViewCell *)cell {
-    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
-    if (indexPath.section == 0) {
-        NSString *o = self.appliedFilters[indexPath.row];
-        [self.appliedFilters removeObjectAtIndex:indexPath.row];
-        [self.notAppliedFilters addObject:o];
-    } else {
-        NSString *o = self.notAppliedFilters[indexPath.row];
-        [self.notAppliedFilters removeObjectAtIndex:indexPath.row];
-        [self.appliedFilters addObject:o];
-    }
-    [self.tableView reloadData];
 }
 
-
-- (IBAction)didTapSaveButton:(id)sender {
-    [self.delegate settingsViewController:self didChangeFilterSelectionsTo:[self.appliedFilters copy]];
-    [self.delegate settingsViewControllerWillDismiss:self];
-    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
-}
 @end

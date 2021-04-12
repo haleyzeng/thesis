@@ -3,19 +3,22 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4B0266D33AD816AC7F902DAD /* Pods_Classroom_Visual_Assistant.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DD607868F1CA7116E5F1C9D /* Pods_Classroom_Visual_Assistant.framework */; };
 		5D01C75A2564140400B3C4BF /* UserDefaultConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D01C7592564140400B3C4BF /* UserDefaultConstants.m */; };
 		5D09D1C4252AA7F7007BEDD0 /* CameraOverlayViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5D09D1C2252AA7F7007BEDD0 /* CameraOverlayViewController.mm */; };
 		5D09D1C5252AA7F7007BEDD0 /* CameraOverlayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D09D1C3252AA7F7007BEDD0 /* CameraOverlayViewController.xib */; };
 		5D0C21BF256CBE94005284B1 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D0C21BD256CBE94005284B1 /* SceneDelegate.m */; };
+		5D1CA01C2607979F0069BE1E /* GameplayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D1CA01B2607979F0069BE1E /* GameplayKit.framework */; };
+		5D36849F25DC0CF4003028F0 /* FilterSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D36849E25DC0CF4003028F0 /* FilterSettingsViewController.m */; };
 		5D785C57259A5198009D2407 /* MultipeerConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D785C56259A5198009D2407 /* MultipeerConnectivity.framework */; };
 		5D7CBA3625A39D0500EC79F7 /* DualSessionCameraOverlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D7CBA3425A39D0500EC79F7 /* DualSessionCameraOverlayViewController.m */; };
 		5D7CBA3725A39D0500EC79F7 /* DualSessionCameraOverlayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D7CBA3525A39D0500EC79F7 /* DualSessionCameraOverlayViewController.xib */; };
+		5D7CBA4025A4ACEB00EC79F7 /* PastSessionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D7CBA3F25A4ACEB00EC79F7 /* PastSessionsViewController.m */; };
 		5DA4EFB42588F816009E4938 /* ImageProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DA4EFB32588F816009E4938 /* ImageProcessor.m */; };
-		5DAEB86E254F725900C9A315 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DAEB86D254F725900C9A315 /* opencv2.framework */; };
 		5DAEB871254F730000C9A315 /* ImageProcessor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5DAEB86F254F730000C9A315 /* ImageProcessor.cpp */; };
 		5DAEB8732551A89900C9A315 /* ImageProcessingBridge.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5DAEB8722551A89900C9A315 /* ImageProcessingBridge.mm */; };
 		5DC9FD582522DAA600CC8A63 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DC9FD572522DAA600CC8A63 /* AppDelegate.m */; };
@@ -24,8 +27,9 @@
 		5DC9FD632522DAA700CC8A63 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5DC9FD622522DAA700CC8A63 /* Assets.xcassets */; };
 		5DC9FD662522DAA700CC8A63 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DC9FD642522DAA700CC8A63 /* LaunchScreen.storyboard */; };
 		5DC9FD692522DAA700CC8A63 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DC9FD682522DAA700CC8A63 /* main.m */; };
+		5DD8F6FA25D6FF3D00C0F87A /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5DD8F6F925D6FF3D00C0F87A /* SettingsViewController.xib */; };
 		5DF90CB42563784E00ED64E0 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DF90CB32563784E00ED64E0 /* SettingsViewController.m */; };
-		5DF90CB62563790600ED64E0 /* SettingsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5DF90CB52563790600ED64E0 /* SettingsView.xib */; };
+		5DF90CB62563790600ED64E0 /* FilterSettingsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5DF90CB52563790600ED64E0 /* FilterSettingsView.xib */; };
 		5DF90CBD2563809500ED64E0 /* FilterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DF90CBB2563809500ED64E0 /* FilterTableViewCell.m */; };
 		5DF90CC02563856C00ED64E0 /* FilterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5DF90CBF2563856C00ED64E0 /* FilterTableViewCell.xib */; };
 /* End PBXBuildFile section */
@@ -44,6 +48,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1DD607868F1CA7116E5F1C9D /* Pods_Classroom_Visual_Assistant.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Classroom_Visual_Assistant.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D01C7582564140400B3C4BF /* UserDefaultConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserDefaultConstants.h; sourceTree = "<group>"; };
 		5D01C7592564140400B3C4BF /* UserDefaultConstants.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserDefaultConstants.m; sourceTree = "<group>"; };
 		5D09D1C1252AA7F7007BEDD0 /* CameraOverlayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CameraOverlayViewController.h; sourceTree = "<group>"; };
@@ -51,13 +56,17 @@
 		5D09D1C3252AA7F7007BEDD0 /* CameraOverlayViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CameraOverlayViewController.xib; sourceTree = "<group>"; };
 		5D0C21BD256CBE94005284B1 /* SceneDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
 		5D0C21BE256CBE94005284B1 /* SceneDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
+		5D1CA01B2607979F0069BE1E /* GameplayKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameplayKit.framework; path = System/Library/Frameworks/GameplayKit.framework; sourceTree = SDKROOT; };
+		5D36849D25DC0CF4003028F0 /* FilterSettingsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FilterSettingsViewController.h; sourceTree = "<group>"; };
+		5D36849E25DC0CF4003028F0 /* FilterSettingsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FilterSettingsViewController.m; sourceTree = "<group>"; };
 		5D785C56259A5198009D2407 /* MultipeerConnectivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MultipeerConnectivity.framework; path = System/Library/Frameworks/MultipeerConnectivity.framework; sourceTree = SDKROOT; };
 		5D7CBA3325A39D0500EC79F7 /* DualSessionCameraOverlayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DualSessionCameraOverlayViewController.h; sourceTree = "<group>"; };
 		5D7CBA3425A39D0500EC79F7 /* DualSessionCameraOverlayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DualSessionCameraOverlayViewController.m; sourceTree = "<group>"; };
 		5D7CBA3525A39D0500EC79F7 /* DualSessionCameraOverlayViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DualSessionCameraOverlayViewController.xib; sourceTree = "<group>"; };
+		5D7CBA3E25A4ACEB00EC79F7 /* PastSessionsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PastSessionsViewController.h; sourceTree = "<group>"; };
+		5D7CBA3F25A4ACEB00EC79F7 /* PastSessionsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PastSessionsViewController.m; sourceTree = "<group>"; };
 		5DA4EFB22588F816009E4938 /* ImageProcessor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageProcessor.h; sourceTree = "<group>"; };
 		5DA4EFB32588F816009E4938 /* ImageProcessor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageProcessor.m; sourceTree = "<group>"; };
-		5DAEB86D254F725900C9A315 /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = opencv2.framework; sourceTree = "<group>"; };
 		5DAEB86F254F730000C9A315 /* ImageProcessor.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ImageProcessor.cpp; sourceTree = "<group>"; };
 		5DAEB870254F730000C9A315 /* ImageProcessor.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ImageProcessor.hpp; sourceTree = "<group>"; };
 		5DAEB8722551A89900C9A315 /* ImageProcessingBridge.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ImageProcessingBridge.mm; sourceTree = "<group>"; };
@@ -72,12 +81,15 @@
 		5DC9FD652522DAA700CC8A63 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5DC9FD672522DAA700CC8A63 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5DC9FD682522DAA700CC8A63 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		5DD8F6F925D6FF3D00C0F87A /* SettingsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
 		5DF90CB22563784E00ED64E0 /* SettingsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		5DF90CB32563784E00ED64E0 /* SettingsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
-		5DF90CB52563790600ED64E0 /* SettingsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsView.xib; sourceTree = "<group>"; };
+		5DF90CB52563790600ED64E0 /* FilterSettingsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterSettingsView.xib; sourceTree = "<group>"; };
 		5DF90CBA2563809500ED64E0 /* FilterTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FilterTableViewCell.h; sourceTree = "<group>"; };
 		5DF90CBB2563809500ED64E0 /* FilterTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FilterTableViewCell.m; sourceTree = "<group>"; };
 		5DF90CBF2563856C00ED64E0 /* FilterTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FilterTableViewCell.xib; sourceTree = "<group>"; };
+		AA54514F2ECBA55BAE9E2D1F /* Pods-Classroom Visual Assistant.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Classroom Visual Assistant.debug.xcconfig"; path = "Target Support Files/Pods-Classroom Visual Assistant/Pods-Classroom Visual Assistant.debug.xcconfig"; sourceTree = "<group>"; };
+		B580FE8F819887F05F3904FA /* Pods-Classroom Visual Assistant.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Classroom Visual Assistant.release.xcconfig"; path = "Target Support Files/Pods-Classroom Visual Assistant/Pods-Classroom Visual Assistant.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,8 +97,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5DAEB86E254F725900C9A315 /* opencv2.framework in Frameworks */,
 				5D785C57259A5198009D2407 /* MultipeerConnectivity.framework in Frameworks */,
+				5D1CA01C2607979F0069BE1E /* GameplayKit.framework in Frameworks */,
+				4B0266D33AD816AC7F902DAD /* Pods_Classroom_Visual_Assistant.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,7 +112,8 @@
 				5DC9FD5F2522DAA600CC8A63 /* Main.storyboard */,
 				5DC9FD642522DAA700CC8A63 /* LaunchScreen.storyboard */,
 				5D09D1C3252AA7F7007BEDD0 /* CameraOverlayViewController.xib */,
-				5DF90CB52563790600ED64E0 /* SettingsView.xib */,
+				5DF90CB52563790600ED64E0 /* FilterSettingsView.xib */,
+				5DD8F6F925D6FF3D00C0F87A /* SettingsViewController.xib */,
 				5DF90CBF2563856C00ED64E0 /* FilterTableViewCell.xib */,
 				5D7CBA3525A39D0500EC79F7 /* DualSessionCameraOverlayViewController.xib */,
 			);
@@ -109,7 +123,9 @@
 		5D785C55259A5198009D2407 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5D1CA01B2607979F0069BE1E /* GameplayKit.framework */,
 				5D785C56259A5198009D2407 /* MultipeerConnectivity.framework */,
+				1DD607868F1CA7116E5F1C9D /* Pods_Classroom_Visual_Assistant.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -117,10 +133,10 @@
 		5DC9FD4A2522DAA600CC8A63 = {
 			isa = PBXGroup;
 			children = (
-				5DAEB86D254F725900C9A315 /* opencv2.framework */,
 				5DC9FD552522DAA600CC8A63 /* Classroom Visual Assistant */,
 				5DC9FD542522DAA600CC8A63 /* Products */,
 				5D785C55259A5198009D2407 /* Frameworks */,
+				F3561AB96D27BC88D6392807 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -153,16 +169,29 @@
 				5DA4EFB32588F816009E4938 /* ImageProcessor.m */,
 				5DAEB8742551A8B000C9A315 /* ImageProcessingBridge.h */,
 				5DAEB8722551A89900C9A315 /* ImageProcessingBridge.mm */,
+				5DAEB870254F730000C9A315 /* ImageProcessor.hpp */,
+				5DAEB86F254F730000C9A315 /* ImageProcessor.cpp */,
 				5DF90CB22563784E00ED64E0 /* SettingsViewController.h */,
 				5DF90CB32563784E00ED64E0 /* SettingsViewController.m */,
+				5D36849D25DC0CF4003028F0 /* FilterSettingsViewController.h */,
+				5D36849E25DC0CF4003028F0 /* FilterSettingsViewController.m */,
 				5DF90CBA2563809500ED64E0 /* FilterTableViewCell.h */,
 				5DF90CBB2563809500ED64E0 /* FilterTableViewCell.m */,
 				5D01C7582564140400B3C4BF /* UserDefaultConstants.h */,
 				5D01C7592564140400B3C4BF /* UserDefaultConstants.m */,
-				5DAEB870254F730000C9A315 /* ImageProcessor.hpp */,
-				5DAEB86F254F730000C9A315 /* ImageProcessor.cpp */,
+				5D7CBA3E25A4ACEB00EC79F7 /* PastSessionsViewController.h */,
+				5D7CBA3F25A4ACEB00EC79F7 /* PastSessionsViewController.m */,
 			);
 			path = "Classroom Visual Assistant";
+			sourceTree = "<group>";
+		};
+		F3561AB96D27BC88D6392807 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AA54514F2ECBA55BAE9E2D1F /* Pods-Classroom Visual Assistant.debug.xcconfig */,
+				B580FE8F819887F05F3904FA /* Pods-Classroom Visual Assistant.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -172,10 +201,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5DC9FD6C2522DAA700CC8A63 /* Build configuration list for PBXNativeTarget "Classroom Visual Assistant" */;
 			buildPhases = (
+				0744521402F1C855C7389EBF /* [CP] Check Pods Manifest.lock */,
 				5DC9FD4F2522DAA600CC8A63 /* Sources */,
 				5DC9FD502522DAA600CC8A63 /* Frameworks */,
 				5DC9FD512522DAA600CC8A63 /* Resources */,
 				5D3E825625488DA90068123F /* Embed Frameworks */,
+				8E17DE1FC29FE97903F499B2 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -227,18 +258,62 @@
 				5DF90CC02563856C00ED64E0 /* FilterTableViewCell.xib in Resources */,
 				5DC9FD632522DAA700CC8A63 /* Assets.xcassets in Resources */,
 				5D09D1C5252AA7F7007BEDD0 /* CameraOverlayViewController.xib in Resources */,
+				5DD8F6FA25D6FF3D00C0F87A /* SettingsViewController.xib in Resources */,
 				5DC9FD612522DAA600CC8A63 /* Main.storyboard in Resources */,
-				5DF90CB62563790600ED64E0 /* SettingsView.xib in Resources */,
+				5DF90CB62563790600ED64E0 /* FilterSettingsView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0744521402F1C855C7389EBF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Classroom Visual Assistant-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8E17DE1FC29FE97903F499B2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Classroom Visual Assistant/Pods-Classroom Visual Assistant-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Classroom Visual Assistant/Pods-Classroom Visual Assistant-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Classroom Visual Assistant/Pods-Classroom Visual Assistant-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		5DC9FD4F2522DAA600CC8A63 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D7CBA4025A4ACEB00EC79F7 /* PastSessionsViewController.m in Sources */,
 				5D01C75A2564140400B3C4BF /* UserDefaultConstants.m in Sources */,
 				5DA4EFB42588F816009E4938 /* ImageProcessor.m in Sources */,
 				5DF90CBD2563809500ED64E0 /* FilterTableViewCell.m in Sources */,
@@ -247,6 +322,7 @@
 				5DC9FD582522DAA600CC8A63 /* AppDelegate.m in Sources */,
 				5DAEB871254F730000C9A315 /* ImageProcessor.cpp in Sources */,
 				5DF90CB42563784E00ED64E0 /* SettingsViewController.m in Sources */,
+				5D36849F25DC0CF4003028F0 /* FilterSettingsViewController.m in Sources */,
 				5DAEB8732551A89900C9A315 /* ImageProcessingBridge.mm in Sources */,
 				5D0C21BF256CBE94005284B1 /* SceneDelegate.m in Sources */,
 				5DC9FD692522DAA700CC8A63 /* main.m in Sources */,
@@ -390,12 +466,13 @@
 		};
 		5DC9FD6D2522DAA700CC8A63 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA54514F2ECBA55BAE9E2D1F /* Pods-Classroom Visual Assistant.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QG5695H4LD;
-				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)";
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = "Classroom Visual Assistant/Info.plist";
@@ -411,12 +488,13 @@
 		};
 		5DC9FD6E2522DAA700CC8A63 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B580FE8F819887F05F3904FA /* Pods-Classroom Visual Assistant.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QG5695H4LD;
-				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)";
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = "Classroom Visual Assistant/Info.plist";

@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void) settingsViewControllerWillDismiss:(SettingsViewController *)settingsViewController;
 - (void) settingsViewController:(SettingsViewController *)settingsViewController didChangeFilterSelectionsTo:(NSArray *)filterSelections;
+- (void) settingsViewController:(SettingsViewController *)settingsViewController didChangeTimerLengthTo:(CGFloat)timerLength;
 
 @end
 
